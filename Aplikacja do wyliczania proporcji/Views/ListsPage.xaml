@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Aplikacja_do_wyliczania_proporcji.Views.ListsPage"
+             Title="ListsPage"
+             xmlns:ads="clr-namespace:Plugin.MauiMTAdmob.Controls;assembly=Plugin.MauiMTAdmob"
+             BackgroundColor= "{AppThemeBinding Light=#D2D2D2, Dark=Grey}"  >
+    <ContentPage.Resources>
+        <Style x:Key="MainLableStyle"   TargetType="Label">
+            <Setter Property="FontSize"
+                    Value="20" />
+            <Setter Property="VerticalTextAlignment"
+                    Value="Center" />
+            <Setter Property="HorizontalTextAlignment"
+                    Value="Center" />
+        </Style>
+        <Style x:Key="NameLableStyle"   TargetType="Label" BasedOn="{StaticResource MainLableStyle}">
+            <Setter Property="WidthRequest"
+                    Value="100" />
+        </Style>
+        <Style x:Key="CountLableStyle"   TargetType="Label" BasedOn="{StaticResource MainLableStyle}">
+            <Setter Property="WidthRequest"
+                    Value="100" />
+        </Style>
+        <Style x:Key="ButtonStyle"   TargetType="Button" >
+            <Setter Property="WidthRequest"
+                    Value="100" />
+            <Setter Property="VerticalOptions"
+                    Value="Center" />
+            <Setter Property="HorizontalOptions"
+                    Value="Center" />
+        </Style>
+        <Style x:Key="IngString"   TargetType="Label">
+            <Setter Property="BackgroundColor"
+                    Value="{AppThemeBinding Light=White, Dark=Black}" />
+            <Setter Property="TextColor"
+                    Value="{AppThemeBinding Light=Black, Dark=White}" />
+        </Style>
+
+    </ContentPage.Resources>
+    <VerticalStackLayout>
+        <Label x:Name="Recipe" Margin="10,10,10,10" FontSize="25" Text="Receptury" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+        <CollectionView x:Name="ListLists">
+            <CollectionView.ItemTemplate >
+                <DataTemplate >
+                    <Grid  >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"  />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition   />
+                            <ColumnDefinition   />
+                            <ColumnDefinition />
+                            <ColumnDefinition  />
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Row="0" Grid.Column="0" Style="{StaticResource NameLableStyle}" Margin="10,0,5,0"     LineBreakMode="CharacterWrap" MaxLines="2"   Text="{Binding Name}"/>
+                        <Label Grid.Row="0" Grid.Column="1" Style="{StaticResource CountLableStyle}" Margin="5,0,5,0" LineBreakMode="MiddleTruncation"    Text="{Binding Count , StringFormat='Ilość: {0}'}"/>
+                        <Button Grid.Row="0" Grid.Column="2" Style="{StaticResource ButtonStyle}"  Margin="5,0,5,0"   Text="Wybierz" Background="Blue"  ClassId="{Binding IdList}" Clicked="ChooseList" />
+                        <ImageButton Grid.Row="0" Grid.Column="3"  Margin="5,0,10,0" VerticalOptions="Center"  WidthRequest="30" HeightRequest="30"  BackgroundColor="Red" ClassId="{Binding IdList}" Source="bin.png" Clicked="DelateList"/>
+                        <Label Grid.Row="1"  Grid.ColumnSpan="4" Style="{StaticResource IngString}"  LineBreakMode="CharacterWrap" MaxLines="3"  FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="{Binding  IngredientsString}"/>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center" >
+            <ads:MTAdView Margin="0,5,0,5"  HorizontalOptions="Center" VerticalOptions="Center" x:Name="Banner">
+                <ads:MTAdView.HeightRequest>
+                    <x:OnIdiom>
+                        <x:OnIdiom.Phone>50
+                        </x:OnIdiom.Phone>
+                    </x:OnIdiom>
+                </ads:MTAdView.HeightRequest>
+            </ads:MTAdView>
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>

@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Aplikacja_do_wyliczania_proporcji.MainPage" 
+             xmlns:ads="clr-namespace:Plugin.MauiMTAdmob.Controls;assembly=Plugin.MauiMTAdmob"
+              BackgroundColor= "{AppThemeBinding Light=#D2D2D2, Dark=Grey}"  >
+    <ContentPage.Resources>
+        <Style x:Key="MainLableStyle"   TargetType="Label">
+            <Setter Property="FontSize"
+                    Value="20" />
+            <Setter Property="VerticalTextAlignment"
+                    Value="Center" />
+            <Setter Property="LineBreakMode"
+                    Value="TailTruncation" />
+        </Style>
+        <Style x:Key="DifferentColorStyle"   TargetType="Label" BasedOn="{StaticResource MainLableStyle}">
+            <Setter Property="BackgroundColor"
+                    Value="{AppThemeBinding Light=White, Dark=Black}" />
+            <Setter Property="TextColor"
+                    Value="{AppThemeBinding Light=Black, Dark=White}" />
+        </Style>
+        <Style x:Key="NumberStyle"   TargetType="Label" BasedOn="{StaticResource DifferentColorStyle}">
+            <Setter Property="WidthRequest"
+                    Value="50" />
+        </Style>
+        <Style x:Key="MainEntryStyle"   TargetType="Entry">
+            <Setter Property="WidthRequest"
+                    Value="100" />
+            <Setter Property="CursorPosition"
+                    Value="0" />
+        </Style>
+    </ContentPage.Resources>
+
+    <VerticalStackLayout>
+        <StackLayout x:Name="Header"  >
+            <HorizontalStackLayout Padding="20,0,0,0" >
+                <Label VerticalTextAlignment="Center" LineBreakMode="TailTruncation"  x:Name="TotalMessLable"  FontSize="25" Text="Masa Całkowita:"/>
+                <Entry Focused="ShowSize" CursorPosition="0"  Unfocused="FixValues"  FontSize="25"  x:Name="TotalMess" Keyboard="Numeric" TextChanged="ChangeMassTotalMass"  />
+            </HorizontalStackLayout>
+            <Label Padding="5,0,0,0"  FontSize="20" Text="Składniki:"/>
+            <HorizontalStackLayout >
+                <Label x:Name="NumberName" Style="{StaticResource DifferentColorStyle}"   Text="Nr."/>
+                <Label x:Name="NameName" Style="{StaticResource MainLableStyle}"   Text="Nazwa"/>
+                <Label x:Name="ProcentName" Style="{StaticResource DifferentColorStyle}"    Text="Procent"/>
+                <Label x:Name="MassName"  Style="{StaticResource MainLableStyle}"   Text="Masa"/>
+            </HorizontalStackLayout>
+        </StackLayout>
+        <ListView x:Name="ListIng">
+            <ListView.ItemTemplate >
+                <DataTemplate  >
+                    <ViewCell >
+                        <Grid >
+                            <HorizontalStackLayout  HeightRequest="50" >
+                                <Label Style="{StaticResource NumberStyle}" HorizontalOptions="Center"  LineBreakMode="CharacterWrap"  Text="{Binding Index}"/>
+                                <Entry Style="{StaticResource MainEntryStyle}"  Focused="ShowSize"   Text="{Binding Name}" Keyboard="Text" />
+                                <Entry Style="{StaticResource MainEntryStyle}"  Focused="ShowSize"  Unfocused="FixValues"    ClassId="{Binding Index}" TextColor="{AppThemeBinding Light=Black, Dark=White}" BackgroundColor="{Binding PercentColor}"  Text="{Binding Percent}" Keyboard="Numeric"  TextChanged="ChangeMassPercent" />
+                                <Entry Style="{StaticResource MainEntryStyle}"  Focused="ShowSize"  Unfocused="FixValues"   ClassId="{Binding Index}" Text="{Binding Mass}" Keyboard="Numeric"  TextChanged="ChangeMass" />
+
+                                <ImageButton HorizontalOptions="End"  WidthRequest="30" HeightRequest="30"  BackgroundColor="Red" ClassId="{Binding Index}" Source="bin.png" Clicked="DelateIngredient"/>
+                            </HorizontalStackLayout>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackLayout >
+            <HorizontalStackLayout x:Name="Footer" >
+                <Button Margin="10,5,5,5" x:Name="AddName"  Text="Dodaj" Background="Green" VerticalOptions="Center" HorizontalOptions="Center" Clicked="AddIngredient" />
+                <Button Margin="5,5,5,5" x:Name="ShowMoreName" IsVisible="False"  Text="Klawiatura" Background="Blue" VerticalOptions="Center" HorizontalOptions="Center" Clicked="ShowMore" />
+                <Button Margin="5,5,10,5" x:Name="SaveName"  Text="Zapisz" Background="Green" VerticalOptions="Center" HorizontalOptions="Center" Clicked="Save" />
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center" >
+                <ads:MTAdView Margin="0,0,0,5"  HorizontalOptions="Center" VerticalOptions="Center" x:Name="Banner">
+                    <ads:MTAdView.HeightRequest>
+                        <x:OnIdiom>
+                            <x:OnIdiom.Phone>50
+                            </x:OnIdiom.Phone>
+                        </x:OnIdiom>
+                    </ads:MTAdView.HeightRequest>
+                </ads:MTAdView>
+            </HorizontalStackLayout>
+        </StackLayout>
+    </VerticalStackLayout>
+
+</ContentPage>
