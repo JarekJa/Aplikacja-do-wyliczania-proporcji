@@ -1,1 +1,1 @@
-# Aplikacja do wyliczania proporcji
+The application is used to create lists of ingredients of some mixture, the ingredients must be mixed in a certain proportion. The user provides the names of the ingredients and the percentage that this ingredient must be part of the mixture. Then, if the user enters the total mass of the mixture or a single ingredient, the application will calculate the masses of the remaining ingredients. The application allows you to save created lists.
