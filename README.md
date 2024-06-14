@@ -1,0 +1,1 @@
+# Aplikacja do wyliczania proporcji
