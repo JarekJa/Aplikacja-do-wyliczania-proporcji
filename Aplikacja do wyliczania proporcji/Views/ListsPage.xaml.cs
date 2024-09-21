@@ -12,7 +12,6 @@ public partial class ListsPage : ContentPage
     private readonly IDataBase _dataBase;
     public ListsPage(IDataBase dataBase)
     {
-        CrossMauiMTAdmob.Current.LoadInterstitial("ca-app-pub-3940256099942544/1033173712");
         _dataBase = dataBase;
         InitializeComponent();
         SetSizeElement();
@@ -29,19 +28,20 @@ public partial class ListsPage : ContentPage
     {
         var displayInfo = DeviceDisplay.MainDisplayInfo;
         var width = displayInfo.Width / displayInfo.Density;
-        Banner.AdsId = "ca-app-pub-3940256099942544/9214589741";
-        CrossMauiMTAdmob.Current.LoadInterstitial("ca-app-pub-3940256099942544/1033173712");
+        width = (width - 50) * 2 / 7;
+        Banner.AdsId = "";
+        CrossMauiMTAdmob.Current.LoadInterstitial("");
         CrossMauiMTAdmob.Current.OnInterstitialLoaded += (sender, args) =>
         {
             DateTime dataInterstitial = Preferences.Default.Get("DataInterstitial", new DateTime(0));
             Interstitial();
         };
         var myNameLableStyle = (Style)Resources["NameLableStyle"];
-        myNameLableStyle.Setters.FirstOrDefault().Value = (width-50)* 2/ 7;
+        myNameLableStyle.Setters.FirstOrDefault().Value = width;
         var myCountLableStyle = (Style)Resources["CountLableStyle"];
-        myCountLableStyle.Setters.FirstOrDefault().Value = (width - 50)* 2/ 7;
+        myCountLableStyle.Setters.FirstOrDefault().Value = width;
         var myButtonStyle = (Style)Resources["ButtonStyle"];
-        myButtonStyle.Setters.FirstOrDefault().Value = (width - 50) *2/ 7;
+        myButtonStyle.Setters.FirstOrDefault().Value = width;
     }
     private void Interstitial()
     {
@@ -50,8 +50,7 @@ public partial class ListsPage : ContentPage
         DateTime dataInterstitial = Preferences.Default.Get("DataInterstitial", date);
         if (dataInterstitial== date)
         {
-            CrossMauiMTAdmob.Current.LoadInterstitial("ca-app-pub-3940256099942544/1033173712");
-            bool pom = CrossMauiMTAdmob.Current.IsInterstitialLoaded();
+            CrossMauiMTAdmob.Current.LoadInterstitial("");
             if (CrossMauiMTAdmob.Current.IsInterstitialLoaded())
             {
                 CrossMauiMTAdmob.Current.ShowInterstitial();

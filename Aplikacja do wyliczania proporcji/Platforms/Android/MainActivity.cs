@@ -14,7 +14,7 @@ namespace Aplikacja_do_wyliczania_proporcji
         {
             base.OnCreate(savedInstanceState);
 
-           CrossMauiMTAdmob.Current.Init(this, "ca-app-pub-8514621308155919~3224724591");
+           CrossMauiMTAdmob.Current.Init(this, "");
         }
     }
 }
