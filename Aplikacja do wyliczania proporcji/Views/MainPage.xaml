@@ -4,6 +4,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Aplikacja_do_wyliczania_proporcji.MainPage" 
              xmlns:ads="clr-namespace:Plugin.MauiMTAdmob.Controls;assembly=Plugin.MauiMTAdmob"
+             xmlns:lang="clr-namespace:Aplikacja_do_wyliczania_proporcji.Resources.Localization"
               BackgroundColor= "{AppThemeBinding Light=#D2D2D2, Dark=Grey}"  >
     <ContentPage.Resources>
         <Style x:Key="MainLableStyle"   TargetType="Label">
@@ -35,15 +36,15 @@
     <VerticalStackLayout>
         <StackLayout x:Name="Header"  >
             <HorizontalStackLayout Padding="20,0,0,0" >
-                <Label VerticalTextAlignment="Center" LineBreakMode="TailTruncation"  x:Name="TotalMessLable"  FontSize="25" Text="Masa Całkowita:"/>
+                <Label VerticalTextAlignment="Center" LineBreakMode="TailTruncation"  x:Name="TotalMessLable"  FontSize="25" Text="{x:Static lang:AppResources.TotalMass}"/>
                 <Entry Focused="ShowSize" CursorPosition="0"  Unfocused="FixValues"  FontSize="25"  x:Name="TotalMess" Keyboard="Numeric" TextChanged="ChangeMassTotalMass"  />
             </HorizontalStackLayout>
-            <Label Padding="5,0,0,0"  FontSize="20" Text="Składniki:"/>
+            <Label Padding="5,0,0,0"  FontSize="20" Text="{x:Static lang:AppResources.Ingredients}"/>
             <HorizontalStackLayout >
                 <Label x:Name="NumberName" Style="{StaticResource DifferentColorStyle}"   Text="Nr."/>
-                <Label x:Name="NameName" Style="{StaticResource MainLableStyle}"   Text="Nazwa"/>
-                <Label x:Name="ProcentName" Style="{StaticResource DifferentColorStyle}"    Text="Procent"/>
-                <Label x:Name="MassName"  Style="{StaticResource MainLableStyle}"   Text="Masa"/>
+                <Label x:Name="NameName" Style="{StaticResource MainLableStyle}"   Text="{x:Static lang:AppResources.Name}"/>
+                <Label x:Name="ProcentName" Style="{StaticResource DifferentColorStyle}"    Text="{x:Static lang:AppResources.Percent}"/>
+                <Label x:Name="MassName"  Style="{StaticResource MainLableStyle}"   Text="{x:Static lang:AppResources.Mass}"/>
             </HorizontalStackLayout>
         </StackLayout>
         <ListView x:Name="ListIng">
@@ -66,9 +67,9 @@
         </ListView>
         <StackLayout >
             <HorizontalStackLayout x:Name="Footer" >
-                <Button Margin="10,5,5,5" x:Name="AddName"  Text="Dodaj" Background="Green" VerticalOptions="Center" HorizontalOptions="Center" Clicked="AddIngredient" />
-                <Button Margin="5,5,5,5" x:Name="ShowMoreName" IsVisible="False"  Text="Klawiatura" Background="Blue" VerticalOptions="Center" HorizontalOptions="Center" Clicked="ShowMore" />
-                <Button Margin="5,5,10,5" x:Name="SaveName"  Text="Zapisz" Background="Green" VerticalOptions="Center" HorizontalOptions="Center" Clicked="Save" />
+                <Button Margin="10,5,5,5" x:Name="AddName"  Text="{x:Static lang:AppResources.Add}" Background="Green" VerticalOptions="Center" HorizontalOptions="Center" Clicked="AddIngredient" />
+                <Button Margin="5,5,5,5" x:Name="ShowMoreName" IsVisible="False"  Text="{x:Static lang:AppResources.Keyboard}" Background="Blue" VerticalOptions="Center" HorizontalOptions="Center" Clicked="ShowMore" />
+                <Button Margin="5,5,10,5" x:Name="SaveName"  Text="{x:Static lang:AppResources.Save}" Background="Green" VerticalOptions="Center" HorizontalOptions="Center" Clicked="Save" />
             </HorizontalStackLayout>
 
             <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Center" >

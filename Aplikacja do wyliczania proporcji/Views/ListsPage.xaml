@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Aplikacja_do_wyliczania_proporcji.Views.ListsPage"
+             xmlns:lang="clr-namespace:Aplikacja_do_wyliczania_proporcji.Resources.Localization"
              Title="ListsPage"
              xmlns:ads="clr-namespace:Plugin.MauiMTAdmob.Controls;assembly=Plugin.MauiMTAdmob"
              BackgroundColor= "{AppThemeBinding Light=#D2D2D2, Dark=Grey}"  >
@@ -39,7 +40,7 @@
 
     </ContentPage.Resources>
     <VerticalStackLayout>
-        <Label x:Name="Recipe" Margin="10,10,10,10" FontSize="25" Text="Receptury" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+        <Label x:Name="Recipe" Margin="10,10,10,10" FontSize="25" Text="{x:Static lang:AppResources.Recipes}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
         <CollectionView x:Name="ListLists">
             <CollectionView.ItemTemplate >
                 <DataTemplate >
@@ -55,8 +56,8 @@
                             <ColumnDefinition  />
                         </Grid.ColumnDefinitions>
                         <Label Grid.Row="0" Grid.Column="0" Style="{StaticResource NameLableStyle}" Margin="10,0,5,0"     LineBreakMode="CharacterWrap" MaxLines="2"   Text="{Binding Name}"/>
-                        <Label Grid.Row="0" Grid.Column="1" Style="{StaticResource CountLableStyle}" Margin="5,0,5,0" LineBreakMode="MiddleTruncation"    Text="{Binding Count , StringFormat='Ilość: {0}'}"/>
-                        <Button Grid.Row="0" Grid.Column="2" Style="{StaticResource ButtonStyle}"  Margin="5,0,5,0"   Text="Wybierz" Background="Blue"  ClassId="{Binding IdList}" Clicked="ChooseList" />
+                        <Label Grid.Row="0" Grid.Column="1" Style="{StaticResource CountLableStyle}" Margin="5,0,5,0" LineBreakMode="MiddleTruncation"    Text="{Binding Count , StringFormat={x:Static lang:AppResources.Count}}"/>
+                        <Button Grid.Row="0" Grid.Column="2" Style="{StaticResource ButtonStyle}"  Margin="5,0,5,0"   Text="{x:Static lang:AppResources.Select}" Background="Blue"  ClassId="{Binding IdList}" Clicked="ChooseList" />
                         <ImageButton Grid.Row="0" Grid.Column="3"  Margin="5,0,10,0" VerticalOptions="Center"  WidthRequest="30" HeightRequest="30"  BackgroundColor="Red" ClassId="{Binding IdList}" Source="bin.png" Clicked="DelateList"/>
                         <Label Grid.Row="1"  Grid.ColumnSpan="4" Style="{StaticResource IngString}"  LineBreakMode="CharacterWrap" MaxLines="3"  FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="{Binding  IngredientsString}"/>
                     </Grid>

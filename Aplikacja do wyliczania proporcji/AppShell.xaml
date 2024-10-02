@@ -5,12 +5,13 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Aplikacja_do_wyliczania_proporcji"
     xmlns:view="clr-namespace:Aplikacja_do_wyliczania_proporcji.Views"
+    xmlns:lang="clr-namespace:Aplikacja_do_wyliczania_proporcji.Resources.Localization"
     Shell.FlyoutBehavior="Disabled"
     Title="Aplikacja_do_wyliczania_proporcji"
      BackgroundColor= "{AppThemeBinding Light=#D2D2D2, Dark=Grey}"
     >
     <Tab x:Name="TabName"  >
-        <ShellContent Shell.NavBarIsVisible="false" Shell.UnselectedColor="{AppThemeBinding Light=White, Dark=#D2D2D2}" Shell.ForegroundColor="Black" Shell.TitleColor="Black" Route="MainPage"  Title="Główna" ContentTemplate = "{DataTemplate local:MainPage}" />
-        <ShellContent Shell.NavBarIsVisible="false" Shell.UnselectedColor="{AppThemeBinding Light=White, Dark=#D2D2D2}" Shell.ForegroundColor="Black" Shell.TitleColor="Black" Route="ListsPage"   Title="Receptury" ContentTemplate = "{DataTemplate view:ListsPage}" />
+        <ShellContent Shell.NavBarIsVisible="false" Shell.UnselectedColor="{AppThemeBinding Light=White, Dark=#D2D2D2}" Shell.ForegroundColor="Black" Shell.TitleColor="Black" Route="MainPage"  Title="{x:Static lang:AppResources.Home}" ContentTemplate = "{DataTemplate local:MainPage}" />
+        <ShellContent Shell.NavBarIsVisible="false" Shell.UnselectedColor="{AppThemeBinding Light=White, Dark=#D2D2D2}" Shell.ForegroundColor="Black" Shell.TitleColor="Black" Route="ListsPage"   Title="{x:Static lang:AppResources.Recipes}" ContentTemplate = "{DataTemplate view:ListsPage}" />
     </Tab>
 </Shell>

@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Aplikacja_do_wyliczania_proporcji.Views.SavePage"
+             xmlns:lang="clr-namespace:Aplikacja_do_wyliczania_proporcji.Resources.Localization"
              Title="SavePage">
     <ContentPage.Resources>
 
@@ -17,16 +18,16 @@
     </ContentPage.Resources>
     <VerticalStackLayout  BackgroundColor= "{AppThemeBinding Light=#D2D2D2, Dark=Grey}"  >
         <HorizontalStackLayout  VerticalOptions="Center" HorizontalOptions="Center"  >
-            <Label  x:Name="Name" Margin="10,5,5,5" FontSize="20" HorizontalTextAlignment="End"  VerticalTextAlignment="Center" Text="Nazwa:"/>
+            <Label  x:Name="Name" Margin="10,5,5,5" FontSize="20" HorizontalTextAlignment="End"  VerticalTextAlignment="Center" Text="{x:Static lang:AppResources.Name}"/>
             <Entry x:Name="NameEntry" Margin="5,5,5,10"  FontSize="20"  Keyboard="Text" />
         </HorizontalStackLayout >
         <Label x:Name="ListName" Style="{StaticResource IngString}" Margin="10,0,0,10"  LineBreakMode="CharacterWrap" MaxLines="3"  FontSize="20" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
         <HorizontalStackLayout  VerticalOptions="Center" HorizontalOptions="Center" >
-            <Button  x:Name="ReturnB" Margin="10,5,5,5" FontSize="20"  Text="Powrót" Background="Blue" VerticalOptions="Center" HorizontalOptions="Center" Clicked="Return" />
-            <Button x:Name="SaveB" Margin="5,5,5,10" FontSize="20"  Text="Nowy" Background="Green" VerticalOptions="Center" HorizontalOptions="Center" Clicked="Save" />
+            <Button  x:Name="ReturnB" Margin="10,5,5,5" FontSize="20"  Text="{x:Static lang:AppResources.Back}" Background="Blue" VerticalOptions="Center" HorizontalOptions="Center" Clicked="Return" />
+            <Button x:Name="SaveB" Margin="5,5,5,10" FontSize="20"  Text="{x:Static lang:AppResources.New}" Background="Green" VerticalOptions="Center" HorizontalOptions="Center" Clicked="Save" />
         </HorizontalStackLayout >
         <HorizontalStackLayout  VerticalOptions="Center" HorizontalOptions="Center" >
-            <Button IsVisible="False"  x:Name="ModB" Margin="5,5,5,10" FontSize="20"  Text="Modyfikuj" Background="Green" VerticalOptions="Center" HorizontalOptions="Center" Clicked="Modify" />
+            <Button IsVisible="False"  x:Name="ModB" Margin="5,5,5,10" FontSize="20"  Text="{x:Static lang:AppResources.Modify}" Background="Green" VerticalOptions="Center" HorizontalOptions="Center" Clicked="Modify" />
         </HorizontalStackLayout >
     </VerticalStackLayout>
 </ContentPage>
