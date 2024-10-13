@@ -223,6 +223,7 @@ namespace Aplikacja_do_wyliczania_proporcji
                     {
                         int index = Convert.ToInt32(entry.ClassId) - 1;
                         percent = Convert.ToDouble(ingredients[index].Percent);
+                        ingredients[index].Mass = e.NewTextValue;
                         if (percent!=0)
                         {
                             totalmass = Math.Round( mass * (100.0 / percent),5);
@@ -302,7 +303,7 @@ namespace Aplikacja_do_wyliczania_proporcji
             {
                 double TotalMassValue;
                 bool isValidmass = Double.TryParse(e.NewTextValue, NumberStyles.Float, currentCulture, out TotalMassValue);
-                if (isValidmass)
+                if (!isValidmass)
                 {
                     TotalMassValue = 0;
                 }
@@ -319,19 +320,24 @@ namespace Aplikacja_do_wyliczania_proporcji
             {
                 ImageButton button = sender as ImageButton;
                 ObservableCollection<Ingredient> ingredients = (ObservableCollection<Ingredient>)ListIng.ItemsSource;
-                int index = Convert.ToInt32(button.ClassId)-1;
-                if (index >=0&&index< ingredients.Count)
+                if (ingredients != null)
                 {
-                    if (ingredients.Remove(ingredients[index]))
+                    int index = Convert.ToInt32(button.ClassId) - 1;
+                    if (index >= 0 && index < ingredients.Count)
                     {
-                        HideKeyBoard();
-                        for (int i = index; i < ingredients.Count; i++)
+                        if (ingredients.Remove(ingredients[index]))
                         {
-                            ingredients[i].Index--;
+                            HideKeyBoard();
+                            for (int i = index; i < ingredients.Count; i++)
+                            {
+                                ingredients[i].Index--;
+                            }
+                            CorrectPercent(ingredients);
+                            ListIng.ItemsSource = null;
+                            ListIng.ItemsSource = ingredients.ToList();
+                            ListIng.ItemsSource = ingredients;
+
                         }
-                        CorrectPercent(ingredients);                       
-                        ListIng.ItemsSource = ingredients; 
-                        
                     }
                 }
             }
@@ -342,16 +348,19 @@ namespace Aplikacja_do_wyliczania_proporcji
             {
                 HideKeyBoard();
                 ObservableCollection<Ingredient> ingredients = (ObservableCollection<Ingredient>)ListIng.ItemsSource;
-                if (ingredients.Count>0)
+                if (ingredients != null)
                 {
-                    ingredients.Add(new Ingredient(ingredients[ingredients.Count - 1].Index + 1));
+                    if (ingredients.Count > 0)
+                    {
+                        ingredients.Add(new Ingredient(ingredients[ingredients.Count - 1].Index + 1));
+                    }
+                    else
+                    {
+                        ingredients.Add(new Ingredient(1));
+                    }
+                    CorrectPercent(ingredients);
+                    ListIng.ItemsSource = ingredients;
                 }
-                else
-                {
-                    ingredients.Add(new Ingredient(1));
-                }
-                CorrectPercent(ingredients);
-                ListIng.ItemsSource = ingredients;
             }
         }
         private void ShowMore(object sender, EventArgs args)

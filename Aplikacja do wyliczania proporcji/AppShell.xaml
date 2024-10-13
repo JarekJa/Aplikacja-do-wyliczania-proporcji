@@ -13,5 +13,6 @@
     <Tab x:Name="TabName"  >
         <ShellContent Shell.NavBarIsVisible="false" Shell.UnselectedColor="{AppThemeBinding Light=White, Dark=#D2D2D2}" Shell.ForegroundColor="Black" Shell.TitleColor="Black" Route="MainPage"  Title="{x:Static lang:AppResources.Home}" ContentTemplate = "{DataTemplate local:MainPage}" />
         <ShellContent Shell.NavBarIsVisible="false" Shell.UnselectedColor="{AppThemeBinding Light=White, Dark=#D2D2D2}" Shell.ForegroundColor="Black" Shell.TitleColor="Black" Route="ListsPage"   Title="{x:Static lang:AppResources.Recipes}" ContentTemplate = "{DataTemplate view:ListsPage}" />
+        <ShellContent Shell.NavBarIsVisible="false" Shell.UnselectedColor="{AppThemeBinding Light=White, Dark=#D2D2D2}" Shell.ForegroundColor="Black" Shell.TitleColor="Black" Route="InfoPage"   Title="Info" ContentTemplate = "{DataTemplate view:InfoPage}" />
     </Tab>
 </Shell>

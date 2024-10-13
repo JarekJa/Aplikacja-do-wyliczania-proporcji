@@ -1,0 +1,4 @@
+﻿	• 	Masa całkowita to suma mas składników. Modyfikując masę całkowitą, masa każdego składnika zmieni się tak, aby proporcja mas składników w masie całkowitej pozostała taka sam. 
+    • 	Proporcje określa procent przy składniku, który mówi jaką część masy całkowitej ma stanowić dany składnik.
+    • 	Jeżeli zmodyfikujesz procent przy składniku, a suma procentów wszystkich składników będzie równa stu procent, masy składników zmienią się, aby dostosować się do nowej proporcji, względem masy całkowitej. W przeciwnym razie kolumna z procentami stanie się czerwona, a z masami składników nic się nie stanie.
+    • 	Modyfikując masę jednego składnika, zostaną wyliczone nowe masy pozostałych składników, tak aby proporcja między nimi została zachowana. Wraz ze zmianą mas składników zmieni się masa całkowita.  

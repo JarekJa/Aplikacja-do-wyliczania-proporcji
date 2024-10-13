@@ -1,0 +1,4 @@
+﻿    • 	The total mass is the sum of the masses of the ingredients. By changing the total mass, the mass of each ingredient will change so that the proportion of the ingredient masses to the total mass remains the same. 	
+    • 	The proportion is determined by the percentage next to the ingredient, which tells you how much of the total mass that ingredient should be. 
+    • 	If you change the percentage next to the ingredient and the sum of the percentages of all the ingredients is one hundred percent, the ingredient masses will change to match the new proportion, relative to the total mass. Otherwise, the percentage column will turn red and nothing will happen to the ingredient masses. 
+    • 	By changing the mass of one ingredient, the other ingredients will be recalculated so that the proportion between them is maintained. As the ingredient masses change, the total mass will change. 
