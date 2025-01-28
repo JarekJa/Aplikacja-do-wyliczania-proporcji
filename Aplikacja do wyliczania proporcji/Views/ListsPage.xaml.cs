@@ -29,8 +29,8 @@ public partial class ListsPage : ContentPage
         var displayInfo = DeviceDisplay.MainDisplayInfo;
         var width = displayInfo.Width / displayInfo.Density;
         width = (width - 50) * 2 / 7;
-        Banner.AdsId = "";
-        CrossMauiMTAdmob.Current.LoadInterstitial("");
+        Banner.AdsId = "ca-app-pub-3940256099942544/9214589741";
+        CrossMauiMTAdmob.Current.LoadInterstitial("ca-app-pub-3940256099942544/1033173712");
         CrossMauiMTAdmob.Current.OnInterstitialLoaded += (sender, args) =>
         {
             DateTime dataInterstitial = Preferences.Default.Get("DataInterstitial", new DateTime(0));
@@ -50,7 +50,7 @@ public partial class ListsPage : ContentPage
         DateTime dataInterstitial = Preferences.Default.Get("DataInterstitial", date);
         if (dataInterstitial== date)
         {
-            CrossMauiMTAdmob.Current.LoadInterstitial("");
+            CrossMauiMTAdmob.Current.LoadInterstitial("ca-app-pub-8514621308155919/2696240391");
             if (CrossMauiMTAdmob.Current.IsInterstitialLoaded())
             {
                 CrossMauiMTAdmob.Current.ShowInterstitial();
@@ -77,7 +77,7 @@ public partial class ListsPage : ContentPage
     }
         private async Task SetItemsSource()
     {
-        ListLists.ItemsSource = await _dataBase.GetAllListIngredientsAsync();
+        ListLists.ItemsSource = await _dataBase.GetAllListStringAsync();
     }
     private async void ChooseList(object sender, EventArgs args)
     {
@@ -94,15 +94,15 @@ public partial class ListsPage : ContentPage
     {
         if (sender != null)
         {
-            ObservableCollection<ListIngredients> lists = (ObservableCollection<ListIngredients>)ListLists.ItemsSource;
+            ObservableCollection<ListIngString> lists = (ObservableCollection<ListIngString>)ListLists.ItemsSource;
             ImageButton button = sender as ImageButton;
             int id = Convert.ToInt32(button.ClassId);
-            ListIngredients listIngredients = lists.Where(sc => sc.IdList == id).FirstOrDefault();
+            ListIngString listIngredients = lists.Where(sc => sc.IdList == id).FirstOrDefault();
             if (listIngredients != null)
             {
                 _dataBase.DelateLisatAsync(id);
                 lists.Remove(listIngredients);
-                ListLists.ItemsSource = new ObservableCollection<ListIngredients>();
+                ListLists.ItemsSource = new ObservableCollection<ListIngString>();
                 ListLists.ItemsSource = lists;
               if(  Preferences.Default.Get("idlist", -1)==id)
                 {

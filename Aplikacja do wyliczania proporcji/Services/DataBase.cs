@@ -86,50 +86,29 @@ namespace Aplikacja_do_wyliczania_proporcji.Sercices
 
             Init();
             List<Ingredient> ing = await _Database.Table<Ingredient>().Where(i => i.IdListIngredients == id).ToListAsync();
-            ObservableCollection<Ingredient> ingredients = new ObservableCollection<Ingredient>();
-            foreach (Ingredient ingredient in ing)
-            {
-                ingredients.Add(ingredient);
-            }
+            ObservableCollection<Ingredient> ingredients = new ObservableCollection<Ingredient>(ing);
             return ingredients;
         }
-        public async Task<ObservableCollection<ListIngredients>> GetAllListIngredientsAsync()
+        public async Task<ObservableCollection<ListIngString>> GetAllListStringAsync()
         {
             Init();
-            ObservableCollection<ListIngredients> lists = new ObservableCollection<ListIngredients>();
+            ObservableCollection<ListIngString> lists = new ObservableCollection<ListIngString>();
             List<Ingredient> ing = await _Database.Table<Ingredient>().ToListAsync();
-            bool exists;
             foreach (Ingredient ingredient in ing)
             {
-                exists = false;
-                foreach (ListIngredients listIngredients in lists)
+                ListIngString listIngString = lists.FirstOrDefault(lists=> lists.IdList==ingredient.IdListIngredients );
+                if (listIngString==null)
                 {
-                    if (ingredient.IdListIngredients == listIngredients.IdList)
-                    {
-                        exists = true;
-                        listIngredients.Ingredients.Add(ingredient);
-                        if (ingredient.Name.Length <= 6)
-                        {
-                            listIngredients.IngredientsString += ingredient.Name + ":" + ingredient.Percent + "%," + ingredient.Mass+";  " ;
-                        }
-                        else
-                        {
-
-                            listIngredients.IngredientsString += ingredient.Name.Substring(0, 6) + ":" + ingredient.Percent + "%," + ingredient.Mass + ";  ";
-                        }
-                        listIngredients.Count++;
-                        break;
-                    }
+                    lists.Add(new ListIngString(ingredient));
                 }
-                if (!exists)
+                else
                 {
-                    lists.Add(new ListIngredients(ingredient.IdListIngredients, ingredient.NameList, ingredient));
+                    listIngString.AddIngredient(ingredient);
                 }
             }
-            return lists;
-
+                return lists;
         }
-        public async Task<bool> DelateLisatAsync(int id)
+            public async Task<bool> DelateLisatAsync(int id)
         {
             Init();
             List<Ingredient> ing = await _Database.Table<Ingredient>().Where(i => i.IdListIngredients == id).ToListAsync();

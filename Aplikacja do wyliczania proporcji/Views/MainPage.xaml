@@ -23,13 +23,19 @@
         </Style>
         <Style x:Key="NumberStyle"   TargetType="Label" BasedOn="{StaticResource DifferentColorStyle}">
             <Setter Property="WidthRequest"
-                    Value="50" />
+                    Value="40" />
+            <Setter Property="Padding"
+                 Value="10,0,0,0" />
+            <Setter Property="LineBreakMode"
+                 Value="CharacterWrap" />
         </Style>
         <Style x:Key="MainEntryStyle"   TargetType="Entry">
             <Setter Property="WidthRequest"
                     Value="100" />
             <Setter Property="CursorPosition"
                     Value="0" />
+            <Setter Property="FontSize"
+                    Value="18" />
         </Style>
     </ContentPage.Resources>
 
@@ -40,8 +46,8 @@
                 <Entry Focused="ShowSize" CursorPosition="0"  Unfocused="FixValues"  FontSize="25"  x:Name="TotalMess" Keyboard="Numeric" TextChanged="ChangeMassTotalMass"  />
             </HorizontalStackLayout>
             <Label Padding="5,0,0,0"  FontSize="20" Text="{x:Static lang:AppResources.Ingredients}"/>
-            <HorizontalStackLayout >
-                <Label x:Name="NumberName" Style="{StaticResource DifferentColorStyle}"   Text="Nr."/>
+            <HorizontalStackLayout   >
+                <Label x:Name="NumberName" Style="{StaticResource NumberStyle}"   Text="Nr."/>
                 <Label x:Name="NameName" Style="{StaticResource MainLableStyle}"   Text="{x:Static lang:AppResources.Name}"/>
                 <Label x:Name="ProcentName" Style="{StaticResource DifferentColorStyle}"    Text="{x:Static lang:AppResources.Percent}"/>
                 <Label x:Name="MassName"  Style="{StaticResource MainLableStyle}"   Text="{x:Static lang:AppResources.Mass}"/>
@@ -52,10 +58,10 @@
                 <DataTemplate  >
                     <ViewCell >
                         <Grid >
-                            <HorizontalStackLayout  HeightRequest="50" >
-                                <Label Style="{StaticResource NumberStyle}" HorizontalOptions="Center"  LineBreakMode="CharacterWrap"  Text="{Binding Index}"/>
+                            <HorizontalStackLayout    HeightRequest="50" >
+                                <Label Style="{StaticResource NumberStyle}"     Text="{Binding Index}"/>
                                 <Entry Style="{StaticResource MainEntryStyle}"  Focused="ShowSize"   Text="{Binding Name}" Keyboard="Text" />
-                                <Entry Style="{StaticResource MainEntryStyle}"  Focused="ShowSize"  Unfocused="FixValues"    ClassId="{Binding Index}" TextColor="{AppThemeBinding Light=Black, Dark=White}" BackgroundColor="{Binding PercentColor}"  Text="{Binding Percent}" Keyboard="Numeric"  TextChanged="ChangeMassPercent" />
+                                <Entry Style="{StaticResource MainEntryStyle}"  Focused="ShowSize"  Unfocused="FixValuesPercent"    ClassId="{Binding Index}" TextColor="{AppThemeBinding Light=Black, Dark=White}" BackgroundColor="{Binding PercentColor}"  Text="{Binding Percent}" Keyboard="Numeric"  TextChanged="ChangeMassPercent" />
                                 <Entry Style="{StaticResource MainEntryStyle}"  Focused="ShowSize"  Unfocused="FixValues"   ClassId="{Binding Index}" Text="{Binding Mass}" Keyboard="Numeric"  TextChanged="ChangeMass" />
 
                                 <ImageButton HorizontalOptions="End"  WidthRequest="30" HeightRequest="30"  BackgroundColor="Red" ClassId="{Binding Index}" Source="bin.png" Clicked="DelateIngredient"/>

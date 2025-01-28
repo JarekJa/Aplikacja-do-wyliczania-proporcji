@@ -46,22 +46,22 @@ namespace Aplikacja_do_wyliczania_proporcji
          
         private void SetSizeElement()
         {
-            Banner.AdsId = "";
+            Banner.AdsId = "ca-app-pub-3940256099942544/9214589741";
             var displayInfo = DeviceDisplay.MainDisplayInfo;
             var width = displayInfo.Width / displayInfo.Density;
             var myNumberStyle =(Style) Resources["NumberStyle"];
-            myNumberStyle.Setters.FirstOrDefault().Value = width / 8;
+            myNumberStyle.Setters.FirstOrDefault().Value = width / 8.0;
             var myMainEntryStyle = (Style)Resources["MainEntryStyle"];
-            myMainEntryStyle.Setters.FirstOrDefault().Value = width / 4;
-            NumberName.WidthRequest = width/8;
-            NameName.WidthRequest = width/4;
-            ProcentName.WidthRequest = width / 4;
-            MassName.WidthRequest = width / 4;
-            SaveName.WidthRequest = (width-40) / 3;
+            myMainEntryStyle.Setters.FirstOrDefault().Value = width / 4.0;
+            NumberName.WidthRequest = width/8.0;
+            NameName.WidthRequest = width/4.0;
+            ProcentName.WidthRequest = width / 4.0;
+            MassName.WidthRequest = width / 4.0;
+            SaveName.WidthRequest = (width-40.0) / 3.0;
             ShowMoreName.WidthRequest = (width - 40) / 3;
-            AddName.WidthRequest = (width - 40) / 3;
-            TotalMess.WidthRequest = (width - 20) /3;
-            TotalMessLable.WidthRequest = (width-20)*2/3;      
+            AddName.WidthRequest = (width - 40.0) / 3.0;
+            TotalMess.WidthRequest = (width - 20.0) /3.0;
+            TotalMessLable.WidthRequest = (width-20.0)*2.0/3.0;      
 
         }
         private void OnPageSizeChanged(object sender, EventArgs e)
@@ -102,9 +102,10 @@ namespace Aplikacja_do_wyliczania_proporcji
             else
             {
                 ingredients = new ObservableCollection<Ingredient>();
-                ingredients.Add(new Ingredient( 1, "A", "50", "50"));
-                ingredients.Add(new Ingredient( 2, "B", "25", "25"));
-                ingredients.Add(new Ingredient( 3, "C", "25", "25"));
+                ingredients.Add(new Ingredient( 1, "A", "52", "26"));
+                ingredients.Add(new Ingredient( 2, "B", Convert.ToString(24.5), Convert.ToString(12.25)));
+                ingredients.Add(new Ingredient( 3, "C", Convert.ToString(15.5), Convert.ToString(7.75)));
+                ingredients.Add(new Ingredient( 4, "D", "8", "4"));
             }
             CorrectPercent(ingredients);
             ListIng.ItemsSource = ingredients;
@@ -136,44 +137,48 @@ namespace Aplikacja_do_wyliczania_proporcji
         }
         private bool CorrectPercent(ObservableCollection<Ingredient> Ingredients)
         {
-            double suma = 0;
-            foreach (Ingredient ingredient in Ingredients)
-            {
-                suma += Convert.ToDouble(ingredient.Percent);
-            }
-            if (suma == 100.0)
-            {
-                AppTheme currentTheme = Application.Current.RequestedTheme;
+
+                double suma = 0;
                 foreach (Ingredient ingredient in Ingredients)
                 {
-                    if(currentTheme==AppTheme.Dark)
+                    double a= Convert.ToDouble(ingredient.Percent);
+                    suma += a;
+                }
+
+                if (suma == 100.0)
+                {
+                    AppTheme currentTheme = Application.Current.RequestedTheme;
+                    foreach (Ingredient ingredient in Ingredients)
                     {
-                        ingredient.PercentColor = "Black";
+                        if (currentTheme == AppTheme.Dark)
+                        {
+                            ingredient.PercentColor = "Black";
+                        }
+                        else
+                        {
+                            ingredient.PercentColor = "White";
+                        }
+                    }
+                    if (currentTheme == AppTheme.Dark)
+                    {
+                        ProcentName.BackgroundColor = Colors.Black;
                     }
                     else
                     {
-                        ingredient.PercentColor = "White";
+                        ProcentName.BackgroundColor = Colors.White;
                     }
-                }
-                if (currentTheme == AppTheme.Dark)
-                {
-                    ProcentName.BackgroundColor = Colors.Black;
+                    return true;
                 }
                 else
                 {
-                    ProcentName.BackgroundColor = Colors.White;
+                    foreach (Ingredient ingredient in Ingredients)
+                    {
+                        ingredient.PercentColor = "Red";
+                    }
+                    ProcentName.BackgroundColor = Colors.Red;
+                    return false;
                 }
-                return true;
-            }
-            else
-            {
-                foreach (Ingredient ingredient in Ingredients)
-                {
-                    ingredient.PercentColor = "Red";
-                }
-                ProcentName.BackgroundColor = Colors.Red;
-                return false;
-            }
+
         }
         private async void ShowSize(object sender, FocusEventArgs e)
         {
@@ -205,8 +210,32 @@ namespace Aplikacja_do_wyliczania_proporcji
                 if (entry.Text[0] == ',' || entry.Text[0] == '.')
                 {
                     entry.Text = "0" + entry.Text;
+                }   
+            }
+        }
+        private void FixValuesPercent(object sender, FocusEventArgs e)
+        {
+            if (sender != null)
+            {
+                Entry entry = sender as Entry;
+                entry.CursorPosition = 0;
+                double value;
+                bool isValidmass = Double.TryParse(entry.Text, NumberStyles.Float, currentCulture, out value);
+                if (!isValidmass)
+                {
+                    entry.Text = "0";
                 }
-                
+                if (value > 100)
+                {
+                    entry.Text = "100";
+                }
+                else
+                {
+                    if (entry.Text[0] == ',' || entry.Text[0] == '.')
+                    {
+                        entry.Text = "0" + entry.Text;
+                    }
+                }
             }
         }
         private void ChangeMass(object sender, TextChangedEventArgs e)
@@ -273,14 +302,7 @@ namespace Aplikacja_do_wyliczania_proporcji
                     
                     if (isValidTotalMassValue && isValidnewvalue)
                     {
-                        if (newvalue <= 100)
-                        {
-                            ingredients[index].Percent = e.NewTextValue;
-                        }
-                        else
-                        {
-                            ingredients[index].Percent = "100";
-                        }
+                         ingredients[index].Percent = e.NewTextValue;
                         if (CorrectPercent(ingredients))
                         {
                             foreach (Ingredient ingredient in ingredients)
@@ -308,9 +330,12 @@ namespace Aplikacja_do_wyliczania_proporcji
                     TotalMassValue = 0;
                 }
                 ObservableCollection<Ingredient> ingredients = (ObservableCollection<Ingredient>)ListIng.ItemsSource;
+                if (ingredients!=null)
+                { 
                 foreach (Ingredient ingredient in ingredients)
                 {
-                    ingredient.Mass = Convert.ToString(Math.Round(TotalMassValue * (Convert.ToDouble(ingredient.Percent) / 100.0),5));
+                    ingredient.Mass = Convert.ToString(Math.Round(TotalMassValue * (Convert.ToDouble(ingredient.Percent) / 100.0), 5));
+                }
                 }
             }
         }
