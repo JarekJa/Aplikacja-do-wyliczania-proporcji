@@ -9,8 +9,8 @@ namespace Aplikacja_do_wyliczania_proporcji.Views;
 public partial class SavePage : ContentPage
 {
     private readonly IDataBase _dataBase;
-    private readonly ObservableCollection<Ingredient> _ingredients;
-    public SavePage(IDataBase dataBase, ObservableCollection<Ingredient> ingredients)
+    private readonly List<Ingredient> _ingredients;
+    public SavePage(IDataBase dataBase, List<Ingredient> ingredients)
 	{
        _dataBase = dataBase;
        _ingredients = ingredients;
@@ -26,12 +26,12 @@ public partial class SavePage : ContentPage
         {
             if (ingredient.Name.Length<=6)
             {
-                list += ingredient.Name + ":" + ingredient.Percent + "%," + ingredient.Mass + "; ";
+                list += ingredient.Name + ":" + Convert.ToString(ingredient.Percent) + "%," + Convert.ToString(ingredient.Mass) + "; ";
             }
             else
             {
 
-                list += ingredient.Name.Substring(0, 6) + ":" + ingredient.Percent + "%," + ingredient.Mass + "; ";
+                list += ingredient.Name.Substring(0, 6) + ":" + Convert.ToString(ingredient.Percent) + "%," + Convert.ToString(ingredient.Mass) + "; ";
             }
         
         }

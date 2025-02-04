@@ -11,83 +11,33 @@ using System.Threading.Tasks;
 namespace Aplikacja_do_wyliczania_proporcji.Models
 {
     [SQLite.Table("Ingredient")]
-    public class Ingredient : INotifyPropertyChanged
+    public class Ingredient 
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; } = -1;
         public int IdListIngredients { get; set; }
-        public string NameList { get; set; } 
-        private int _Index { get; set; }
-        private string _Name { get; set; } = "";
-        private string _Percent { get; set; } = "";
-        private string _PercentColor { get; set; } = "White";
-        private string _Mass { get; set; } = "";
+        public string NameList { get; set; }
+        public int Index { get; set; }
+        public string Name { get; set; } = "";
+        public double Percent { get; set; }
+        public double Mass { get; set; } 
         public Ingredient(int index)
         {
-            _Index = index;
-            _Percent = "1";
-            _Mass = "1";
+            Index = index;
+            Percent = 1;
+            Mass = 1;
         }
-        public Ingredient(int index,string name,string percent, string mass)
+        public Ingredient(int index,string name,double percent, double mass)
         {
-            _Index = index;
-            _Percent = percent;
-            _Mass = mass;
-            _Name= name;
+            Index = index;
+            Percent = percent;
+            Mass = mass;
+            Name= name;
         }
         public Ingredient()
         {
             
         }
-        public string Name
-        {
-            get => _Name;
-            set
-            {
-                _Name = value;
-                OnPropertyChanged();
-            }
-        }
-        public string Percent
-        {
-            get => _Percent;
-            set
-            {
-                _Percent = value;
-                OnPropertyChanged();
-            }
-        }
-        public string PercentColor
-        {
-            get => _PercentColor;
-            set
-            {
-                _PercentColor = value;
-                OnPropertyChanged();
-            }
-        }
-        public int Index
-        {
-            get => _Index;
-            set
-            {
-                _Index = value;
-                OnPropertyChanged();
-            }
-        }
-        public string Mass
-        {
-            get => _Mass;
-            set
-            {
-                _Mass = value;
-                OnPropertyChanged();
-            }
-        }
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-        public event PropertyChangedEventHandler? PropertyChanged;
+
     }
 }

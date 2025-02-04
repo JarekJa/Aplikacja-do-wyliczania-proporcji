@@ -15,11 +15,11 @@ namespace Aplikacja_do_wyliczania_proporcji.Models
             Name = ingredient.NameList;
             if (ingredient.Name.Length <= 6)
             {
-                IngredientsString = ingredient.Name + ":" + ingredient.Percent + "%," + ingredient.Mass + ";  ";
+                IngredientsString = ingredient.Name + ":" + Convert.ToString(ingredient.Percent) + "%," + Convert.ToString(ingredient.Mass) + ";  ";
             }
             else
             {
-                IngredientsString = ingredient.Name.Substring(0, 6) + ":" + ingredient.Percent + "%," + ingredient.Mass + ";  ";
+                IngredientsString = ingredient.Name.Substring(0, 6) + ":" + Convert.ToString(ingredient.Percent) + "%," + Convert.ToString(ingredient.Mass) + ";  ";
             }
             Count = 1;
             IdList = ingredient.IdListIngredients;
@@ -28,12 +28,11 @@ namespace Aplikacja_do_wyliczania_proporcji.Models
         {
             if (ingredient.Name.Length <= 6)
             {
-                IngredientsString += ingredient.Name + ":" + ingredient.Percent + "%," + ingredient.Mass + ";  ";
+                IngredientsString += ingredient.Name + ":" + Convert.ToString(ingredient.Percent) + "%," + Convert.ToString(ingredient.Mass) + ";  ";
             }
             else
             {
-
-                IngredientsString += ingredient.Name.Substring(0, 6) + ":" + ingredient.Percent + "%," + ingredient.Mass + ";  ";
+                IngredientsString += ingredient.Name.Substring(0, 6) + ":" + Convert.ToString(ingredient.Percent) + "%," + Convert.ToString(ingredient.Mass) + ";  ";
             }
             Count++;
         }

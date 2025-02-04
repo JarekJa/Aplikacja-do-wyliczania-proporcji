@@ -12,7 +12,7 @@ namespace Aplikacja_do_wyliczania_proporcji.Sercices.Interfaces
     {
         public void Init();
         public Task<int> AddItemAsync(ListIngredients list);
-        public Task<ObservableCollection<Ingredient>> GetListItemsAsync(int id);
+        public Task<List<Ingredient>> GetListItemsAsync(int id);
         public Task< ObservableCollection<ListIngString>> GetAllListStringAsync();
         public Task<bool> DelateLisatAsync(int id);
         public Task<bool> ModifyItemAsync(ListIngredients list);

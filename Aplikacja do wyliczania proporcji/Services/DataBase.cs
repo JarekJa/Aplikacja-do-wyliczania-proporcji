@@ -81,13 +81,11 @@ namespace Aplikacja_do_wyliczania_proporcji.Sercices
             }
             return 0;
         }
-        public async Task<ObservableCollection<Ingredient>> GetListItemsAsync(int id)
+        public async Task<List<Ingredient>> GetListItemsAsync(int id)
         {
-
             Init();
             List<Ingredient> ing = await _Database.Table<Ingredient>().Where(i => i.IdListIngredients == id).ToListAsync();
-            ObservableCollection<Ingredient> ingredients = new ObservableCollection<Ingredient>(ing);
-            return ingredients;
+            return ing;
         }
         public async Task<ObservableCollection<ListIngString>> GetAllListStringAsync()
         {

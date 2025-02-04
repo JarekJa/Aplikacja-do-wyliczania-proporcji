@@ -9,9 +9,9 @@ namespace Aplikacja_do_wyliczania_proporcji.Models
 {
     public class ListIngredients:ListIng
     {
-        public ObservableCollection<Ingredient> Ingredients { get; set; } = new ObservableCollection<Ingredient>();
+        public List<Ingredient> Ingredients { get; set; } = new List<Ingredient>();
 
-            public ListIngredients(string name, ObservableCollection<Ingredient> ingredients)
+            public ListIngredients(string name, List<Ingredient> ingredients)
         {
                 Name = name;
             Ingredients = ingredients;
