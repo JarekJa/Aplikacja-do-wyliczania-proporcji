@@ -4,7 +4,8 @@
              xmlns:local="clr-namespace:Aplikacja_do_wyliczania_proporcji"
              x:Class="Aplikacja_do_wyliczania_proporcji.App"
               xmlns:android="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;assembly=Microsoft.Maui.Controls"
-             android:Application.WindowSoftInputModeAdjust="Resize">
+             android:Application.WindowSoftInputModeAdjust="Resize"
+>
     <Application.Resources >
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

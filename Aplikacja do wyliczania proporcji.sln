@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aplikacja do wyliczania proporcji", "Aplikacja do wyliczania proporcji\Aplikacja do wyliczania proporcji.csproj", "{0D7A5299-07C5-44F3-BCEB-F5A0EEA359A3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aplikacja_do_wyliczania_proporcji", "Aplikacja do wyliczania proporcji\Aplikacja_do_wyliczania_proporcji.csproj", "{0D7A5299-07C5-44F3-BCEB-F5A0EEA359A3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

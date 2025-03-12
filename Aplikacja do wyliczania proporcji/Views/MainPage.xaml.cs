@@ -49,7 +49,7 @@ namespace Aplikacja_do_wyliczania_proporcji
          
         private void SetSizeElement()
         {
-            Banner.AdsId = "ca-app-pub-3940256099942544/9214589741";
+            Banner.AdsId = "";
             var displayInfo = DeviceDisplay.MainDisplayInfo;
             var width = displayInfo.Width / displayInfo.Density;
             var myNumberStyle =(Style) Resources["NumberStyle"];
@@ -194,11 +194,11 @@ namespace Aplikacja_do_wyliczania_proporcji
                 _keyBoardEntry = entry;
                 ShowMoreName.IsVisible = true;
                 Banner.IsVisible = false;
-                if(!entry.IsSoftKeyboardShowing())
+                if (!entry.IsSoftKeyboardShowing())
                 {
-                  await  entry.ShowKeyboardAsync();
+                 await entry.ShowKeyboardAsync();
                 }
-               
+
             }
         }
         private void FixValues(object sender, FocusEventArgs e)
