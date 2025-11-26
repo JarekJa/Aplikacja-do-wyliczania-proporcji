@@ -16,7 +16,7 @@
         </Style>
 
     </ContentPage.Resources>
-    <VerticalStackLayout  BackgroundColor= "{AppThemeBinding Light=#D2D2D2, Dark=Grey}"  >
+    <VerticalStackLayout Padding="0,40,0,0"  BackgroundColor= "{AppThemeBinding Light=#D2D2D2, Dark=Grey}"  >
         <HorizontalStackLayout  VerticalOptions="Center" HorizontalOptions="Center"  >
             <Label  x:Name="Name" Margin="10,5,5,5" FontSize="20" HorizontalTextAlignment="End"  VerticalTextAlignment="Center" Text="{x:Static lang:AppResources.Name}"/>
             <Entry x:Name="NameEntry" Margin="5,5,5,10"  FontSize="20"  Keyboard="Text" />

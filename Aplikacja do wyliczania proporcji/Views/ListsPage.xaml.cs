@@ -29,8 +29,8 @@ public partial class ListsPage : ContentPage
         var displayInfo = DeviceDisplay.MainDisplayInfo;
         var width = displayInfo.Width / displayInfo.Density;
         width = (width - 50) * 2 / 7;
-        Banner.AdsId = "";
-        CrossMauiMTAdmob.Current.LoadInterstitial("");
+        Banner.AdsId = "ca-app-pub-3940256099942544/9214589741";
+        CrossMauiMTAdmob.Current.LoadInterstitial("ca-app-pub-3940256099942544/1033173712");
         CrossMauiMTAdmob.Current.OnInterstitialLoaded += (sender, args) =>
         {
             DateTime dataInterstitial = Preferences.Default.Get("DataInterstitial", new DateTime(0));
@@ -50,7 +50,7 @@ public partial class ListsPage : ContentPage
         DateTime dataInterstitial = Preferences.Default.Get("DataInterstitial", date);
         if (dataInterstitial== date)
         {
-            CrossMauiMTAdmob.Current.LoadInterstitial("");
+            CrossMauiMTAdmob.Current.LoadInterstitial("ca-app-pub-3940256099942544/1033173712");
             if (CrossMauiMTAdmob.Current.IsInterstitialLoaded())
             {
                 CrossMauiMTAdmob.Current.ShowInterstitial();

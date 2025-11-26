@@ -49,7 +49,7 @@ namespace Aplikacja_do_wyliczania_proporcji
          
         private void SetSizeElement()
         {
-            Banner.AdsId = "";
+            Banner.AdsId = "ca-app-pub-3940256099942544/9214589741";
             var displayInfo = DeviceDisplay.MainDisplayInfo;
             var width = displayInfo.Width / displayInfo.Density;
             var myNumberStyle =(Style) Resources["NumberStyle"];
@@ -64,12 +64,11 @@ namespace Aplikacja_do_wyliczania_proporcji
             ShowMoreName.WidthRequest = (width - 40) / 3;
             AddName.WidthRequest = (width - 40.0) / 3.0;
             TotalMess.WidthRequest = (width - 20.0) /3.0;
-            TotalMessLable.WidthRequest = (width-20.0)*2.0/3.0;      
+            TotalMessLable.WidthRequest = (width-20.0)*2.0/3.0;   
 
         }
-        private void OnPageSizeChanged(object sender, EventArgs e)
+        private void SetHeightElement()
         {
-
             var height = this.Bounds.Height;
             var header = Header.Height;
             var footer = Footer.Height;
@@ -85,12 +84,16 @@ namespace Aplikacja_do_wyliczania_proporcji
             }
             if (Banner.IsVisible)
             {
-                ListIng.MaximumHeightRequest = height - header - footer- 55;
+                ListIng.MaximumHeightRequest = height - header - footer - 55;
             }
             else
             {
                 ListIng.MaximumHeightRequest = height - header - footer;
             }
+        }
+        private void OnPageSizeChanged(object sender, EventArgs e)
+        {
+            SetHeightElement();
         }
 
 
@@ -418,6 +421,7 @@ namespace Aplikacja_do_wyliczania_proporcji
                         mainlist.Add(new Ingredient(1));
                         ingredients.Add(new IngredientString(new Ingredient(1)));
                     }
+                    SetHeightElement();
                     CorrectPercent(ingredients);
                     ListIng.ItemsSource = ingredients;
                 }
