@@ -17,6 +17,7 @@ namespace Aplikacja_do_wyliczania_proporcji
             base.OnCreate(savedInstanceState);
             EnableEdgeToEdge();
             CrossMauiMTAdmob.Current.Init(this, "");
+            Window.SetSoftInputMode(Android.Views.SoftInput.AdjustResize);
         }
         private void EnableEdgeToEdge()
         {

@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Aplikacja_do_wyliczania_proporcji.Views.SavePage"
              xmlns:lang="clr-namespace:Aplikacja_do_wyliczania_proporcji.Resources.Localization"
+             SafeAreaEdges="All"
              Title="SavePage">
     <ContentPage.Resources>
 

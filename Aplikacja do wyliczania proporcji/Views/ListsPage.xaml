@@ -5,7 +5,8 @@
              xmlns:lang="clr-namespace:Aplikacja_do_wyliczania_proporcji.Resources.Localization"
              Title="ListsPage"
              xmlns:ads="clr-namespace:Plugin.MauiMTAdmob.Controls;assembly=Plugin.MauiMTAdmob"
-             BackgroundColor= "{AppThemeBinding Light=#D2D2D2, Dark=Grey}"  >
+             BackgroundColor= "{AppThemeBinding Light=#D2D2D2, Dark=Grey}" 
+             SafeAreaEdges="All">
     <ContentPage.Resources>
         <Style x:Key="MainLableStyle"   TargetType="Label">
             <Setter Property="FontSize"
