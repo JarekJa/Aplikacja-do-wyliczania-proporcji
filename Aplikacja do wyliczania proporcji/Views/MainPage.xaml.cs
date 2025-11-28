@@ -204,6 +204,14 @@ namespace Aplikacja_do_wyliczania_proporcji
 
             }
         }
+        private void FixName(object sender, FocusEventArgs e)
+        {
+            if (sender != null)
+            {
+                Entry entry = sender as Entry;
+                entry.CursorPosition = 0;
+            }
+        }
         private void FixValues(object sender, FocusEventArgs e)
         {
             if (sender != null)
@@ -254,6 +262,17 @@ namespace Aplikacja_do_wyliczania_proporcji
                     {
                         entry.Text = "0" + entry.Text;
                     }
+                }
+            }
+        }
+        private void ChangeName(object sender, TextChangedEventArgs e)
+        {
+            if (sender != null)
+            {
+                Entry entry = sender as Entry;
+                if (entry.IsFocused)
+                {
+                    mainlist[Convert.ToInt32(entry.ClassId) - 1].Name = e.NewTextValue;
                 }
             }
         }

@@ -1,12 +1,7 @@
 ﻿using Aplikacja_do_wyliczania_proporcji.Models;
 using Aplikacja_do_wyliczania_proporcji.Sercices.Interfaces;
 using SQLite;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Aplikacja_do_wyliczania_proporcji.Sercices
 {

@@ -60,7 +60,7 @@
                         <Grid >
                             <HorizontalStackLayout    HeightRequest="50" >
                                 <Label Style="{StaticResource NumberStyle}"     Text="{Binding Index}"/>
-                                <Entry Style="{StaticResource MainEntryStyle}"  Focused="ShowSize"   Text="{Binding Name}" Keyboard="Text" />
+                                <Entry Style="{StaticResource MainEntryStyle}"  Focused="ShowSize"  Unfocused="FixName"  Text="{Binding Name}" TextChanged="ChangeName" ClassId="{Binding Index}"  Keyboard="Text" />
                                 <Entry Style="{StaticResource MainEntryStyle}"  Focused="ShowSize"  Unfocused="FixValuesPercent"    ClassId="{Binding Index}" TextColor="{AppThemeBinding Light=Black, Dark=White}" BackgroundColor="{Binding PercentColor}"  Text="{Binding Percent}" Keyboard="Numeric"  TextChanged="ChangeMassPercent" />
                                 <Entry Style="{StaticResource MainEntryStyle}"  Focused="ShowSize"  Unfocused="FixValues"   ClassId="{Binding Index}" Text="{Binding Mass}" Keyboard="Numeric"  TextChanged="ChangeMass" />
 
